@@ -4,6 +4,7 @@
   "description": "A simple to do list app, using JavaScript-Node JS(Express) and Mongo DB.",
   "main": "server.js",
   "scripts": {
+    "watch": "nodemon server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
@@ -19,6 +20,7 @@
   },
   "homepage": "https://github.com/swarajlaha/to-do-app#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "nodemon": "^2.0.2"
   }
 }
