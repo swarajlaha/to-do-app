@@ -1,0 +1,24 @@
+{
+  "name": "to-do-app",
+  "version": "1.0.0",
+  "description": "A simple to do list app, using JavaScript-Node JS(Express) and Mongo DB.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/swarajlaha/to-do-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/swarajlaha/to-do-app/issues"
+  },
+  "homepage": "https://github.com/swarajlaha/to-do-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
