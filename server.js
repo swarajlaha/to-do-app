@@ -76,7 +76,7 @@ app.post('/create-item', function(req, res) {
     // create a new doc in mongodb.
     // 'insertOne({<object>, function})'.
     db.collection('items').insertOne({text: req.body.item}, function() {
-        res.send("Thanks for submitting the form")
+        res.redirect('/')
     })
 })
 
