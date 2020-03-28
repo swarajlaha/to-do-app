@@ -68,8 +68,11 @@ app.get('/', function(req, res) {
 
 // when web browser sends a POST req to the '/create-item' url, in reponse, run the function.
 app.post('/create-item', function(req, res) {
-    console.log(req.body.item)
-    res.send("Thanks for submitting the form")
+    // create a new doc in mongodb.
+    // 'insertOne({<object>, function})'.
+    db.collection('items').insertOne({text: req.body.item}, function() {
+        res.send("Thanks for submitting the form")
+    })
 })
 
 // tell app to listen for incoming requests, port:3000.
