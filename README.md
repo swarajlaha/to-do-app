@@ -1,2 +1,2 @@
 # to-do-app
-A to-do list app, using JavaScript - Node JS(Express) and Mongo DB, using CRUD operations.
+An interactive 'to-do list app', using JavaScript for client and server side (Express JS) scripting and MongoDB as database.
