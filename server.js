@@ -12,6 +12,9 @@ let mongodb = require('mongodb')
 let app = express()
 let db
 
+// use contents of the folder 'public'.
+app.use(express.static('public'))
+
 // open a connection with the db.
 // 'connect(<connectionString-where or what we want to connect to>,  , <function that connect method calls, after opening up connection with db>) '.
 // connect string from mongo db.
@@ -64,7 +67,7 @@ app.get('/', function(req, res) {
             </ul>
 
           </div>
-        
+        <script src="/browser.js"></script>
         </body>
         </html>`)
     })
