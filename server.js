@@ -32,6 +32,23 @@ app.use(express.json())
 // tell express add all form values to body object and then add that body object the req object.
 app.use(express.urlencoded({extended: false}))
 
+// add password protection.
+function passwordProtected(req, res, next) {
+    // prompt user to enter user name and password.
+    res.set('WWW-Authenticate', 'Basic realm="Simple Todo App"')
+    console.log(req.headers.authorization)
+    // only if credentials match.
+    if(req.headers.authorization == "Basic amF2YXNjcmlwdDpwcm9qZWN0") {
+        // next function to run, only IF is true.
+        next()
+    } else {
+        res.status(401).send("Authentication required")
+    }
+}
+
+// function to add passwordProtected to all urls.
+app.use(passwordProtected)
+
 // if it receives an incoming GET req to the home page url.
 app.get('/', function(req, res) {
     db.collection('items').find().toArray(function(err, items) {
