@@ -81,6 +81,7 @@ app.get('/', function(req, res) {
 app.post('/create-item', function(req, res) {
     // create a new doc in mongodb.
     // 'insertOne({<object>, function})'.
+    // perform CREATE operation.
     db.collection('items').insertOne({text: req.body.item}, function() {
         res.redirect('/')
     })
@@ -91,7 +92,18 @@ app.post('/update-item', function(req, res) {
     
     // connect with db.
     // 'findOneAndUpdate(<which doc to update>, <what to update>, <function that gets called, when db action is complete>)'.
+    // perform UPDATE opeartion.
     db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: req.body.text}}, function() {
+        res.send("Success")
+    })
+})
+
+// tell express server what to do when it receives a delete-item url.
+app.post('/delete-item', function(req, res) {
+
+    // perform DELETE operation.
+    // deleteOne(<select doc to be deleted>, <function that runs, once db changes are complete>).
+    db.collection('items').deleteOne({_id: new mongodb.ObjectId(req.body.id)}, function() {
         res.send("Success")
     })
 })
