@@ -90,10 +90,14 @@ app.get('/', function(req, res) {
 
 // when web browser sends a POST req to the '/create-item' url, in reponse, run the function.
 app.post('/create-item', function(req, res) {
+
+    // sanitize html, add allowed elements.
+    let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+
     // create a new doc in mongodb.
     // 'insertOne({<object>, function})'.
     // perform CREATE operation.
-    db.collection('items').insertOne({text: req.body.text}, function(err, info) {
+    db.collection('items').insertOne({text: safeText}, function(err, info) {
         res.json(info.ops[0])
     })
 })
@@ -101,10 +105,13 @@ app.post('/create-item', function(req, res) {
 // send user upated value to 'browser.js'.
 app.post('/update-item', function(req, res) {
     
+    // sanitize html, update allowed elements.
+    let safeText = sanitizeHTML(req.body.text, {allowedTags: [], allowedAttributes: {}})
+
     // connect with db.
     // 'findOneAndUpdate(<which doc to update>, <what to update>, <function that gets called, when db action is complete>)'.
     // perform UPDATE opeartion.
-    db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: req.body.text}}, function() {
+    db.collection('items').findOneAndUpdate({_id: new mongodb.ObjectId(req.body.id)}, {$set: {text: safeText}}, function() {
         res.send("Success")
     })
 })
