@@ -1,4 +1,23 @@
 document.addEventListener("click", function(e) {
+
+    // delete feature.
+    if(e.target.classList.contains("delete-me")) {
+        if(confirm("Confirm to DELETE!")) {
+
+            // run axios, to have the browser send an async req to our node server.
+            axios.post('/delete-item', {id: e.target.getAttribute("data-id")}).then(function() {
+
+                // this body will run, once the axios req is complete.
+                // manipulate html interface - delete the element.
+                e.target.parentElement.parentElement.remove()
+    
+            }).catch(function() {
+                console.log("Please try again later.")
+            }) 
+        }
+    }
+
+    // update feature.
     if(e.target.classList.contains("edit-me")) {
         let userInput = prompt("Enter your desired text value", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML)
 
