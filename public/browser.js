@@ -7,7 +7,11 @@ document.addEventListener("click", function(e) {
         // post(<url that we want to send a POST req to>, <JS obj-the data that'll be sent along to the url>).
         // 'axios.post' - returns a Promise(used when we're not sure how long an action is going to take).
         axios.post('/update-item', {text: userInput, id: e.target.getAttribute("data-id")}).then(function() {
-            // do something
+
+            // this body will run, once the axios req is complete.
+            // manipulate html interface.
+            e.target.parentElement.parentElement.querySelector(".item-text").innerHTML = userInput
+
         }).catch(function() {
             console.log("Please try again later.")
         })
