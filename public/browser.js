@@ -23,6 +23,12 @@ document.getElementById("create-form").addEventListener("submit", function(e) {
         // create the html for a new item.
         document.getElementById("item-list").insertAdjacentHTML("beforeend", itemTemplate(response.data))
 
+        // show user blank input field, after submitting the prev item, or clear out the existing value.
+        createField.value = ""
+
+        // refocus user's cursor onto that field.
+        createField.focus()
+
     }).catch(function() {
         console.log("Please try again later.")
     })
