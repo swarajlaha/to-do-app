@@ -3,6 +3,7 @@
     Steps:
         1. Run 'npm init', in terminal/cmd - It creates 'package.json' file in the current directory.
         2. Run 'npm install express' - Creates 'node modules' folder.
+        3. Run 'npm run watch' to see changes in browser.
 */
 
 // import following.
@@ -47,16 +48,16 @@ app.get('/', function(req, res) {
             <h1 class="display-4 text-center py-1">To-Do App</h1>
 
             <div class="jumbotron p-3 shadow-sm">
-            <!-- from action -->
-              <form action="/create-item" method="POST">
+              <!-- from action -->
+              <form id="create-form" action="/create-item" method="POST">
                 <div class="d-flex align-items-center">
-                  <input name="item" autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;">
+                  <input id="create-field" name="item" autofocus autocomplete="off" class="form-control mr-3" type="text" style="flex: 1;">
                   <button class="btn btn-primary">Add New Item</button>
                 </div>
               </form>
             </div>
 
-            <ul class="list-group pb-5">
+            <ul id="item-list" class="list-group pb-5">
               ${items.map(function(item) {
                   return `<li class="list-group-item list-group-item-action d-flex align-items-center justify-content-between">
                   <span class="item-text">${item.text}</span>
@@ -82,8 +83,8 @@ app.post('/create-item', function(req, res) {
     // create a new doc in mongodb.
     // 'insertOne({<object>, function})'.
     // perform CREATE operation.
-    db.collection('items').insertOne({text: req.body.item}, function() {
-        res.redirect('/')
+    db.collection('items').insertOne({text: req.body.text}, function() {
+        res.send("Success")
     })
 })
 
