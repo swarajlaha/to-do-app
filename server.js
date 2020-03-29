@@ -83,8 +83,8 @@ app.post('/create-item', function(req, res) {
     // create a new doc in mongodb.
     // 'insertOne({<object>, function})'.
     // perform CREATE operation.
-    db.collection('items').insertOne({text: req.body.text}, function() {
-        res.send("Success")
+    db.collection('items').insertOne({text: req.body.text}, function(err, info) {
+        res.json(info.ops[0])
     })
 })
 
