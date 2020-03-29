@@ -26,7 +26,7 @@ app.use(express.static('public'))
 // open a connection with the db.
 // 'connect(<connectionString-where or what we want to connect to>,  , <function that connect method calls, after opening up connection with db>) '.
 // connect string from mongo db.
-let connectionString = 'mongodb+srv://todoAppUser:todoapp@cluster0-dxgk9.mongodb.net/TodoApp?retryWrites=true&w=majority' 
+let connectionString = process.env.MONGODB 
 mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client) {
     // selects mongodb db.
     db = client.db()
