@@ -26,6 +26,8 @@ mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: tr
     app.listen(3000)
 })
 
+// take submitted form data for asynchronous req.
+app.use(express.json())
 // tell express add all form values to body object and then add that body object the req object.
 app.use(express.urlencoded({extended: false}))
 
@@ -84,3 +86,8 @@ app.post('/create-item', function(req, res) {
     })
 })
 
+// send user upated value to 'browser.js'.
+app.post('/update-item', function(req, res) {
+    console.log(req.body.text)
+    res.send("Success")
+})
