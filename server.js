@@ -14,6 +14,12 @@ let sanitizeHTML = require('sanitize-html')
 let app = express()
 let db
 
+// heroku port.
+let port = process.env.port
+if(port == null || port == "") {
+  port = 3000
+}
+
 // use contents of the folder 'public'.
 app.use(express.static('public'))
 
@@ -24,8 +30,8 @@ let connectionString = 'mongodb+srv://todoAppUser:todoapp@cluster0-dxgk9.mongodb
 mongodb.connect(connectionString, {useNewUrlParser: true, useUnifiedTopology: true}, function(err, client) {
     // selects mongodb db.
     db = client.db()
-    // tell app to listen for incoming requests, port:3000.
-    app.listen(3000)
+    // tell app to listen for incoming requests, port.
+    app.listen(port)
 })
 
 // take submitted form data for asynchronous req.
