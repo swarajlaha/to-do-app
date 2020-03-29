@@ -1,6 +1,6 @@
 document.addEventListener("click", function(e) {
     if(e.target.classList.contains("edit-me")) {
-        let userInput = prompt("Enter your desired text value")
+        let userInput = prompt("Enter your desired text value", e.target.parentElement.parentElement.querySelector(".item-text").innerHTML)
 
         // send 'userInput' data to node server.
         // send on-the-fly POST req to server.
