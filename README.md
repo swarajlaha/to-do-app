@@ -1,4 +1,4 @@
-# TO-DO-App
+# TO-DO-APP
 
 An interactive 'To-Do list App', using JavaScript for client and server side (Express JS) scripting and MongoDB as database. 
 Live demo: https://checkmytodoapp.herokuapp.com/
