@@ -45,7 +45,7 @@ function passwordProtected(req, res, next) {
     res.set('WWW-Authenticate', 'Basic realm="Simple Todo App"')
     console.log(req.headers.authorization)
     // only if credentials match.
-    if(req.headers.authorization == "Basic amF2YXNjcmlwdDpwcm9qZWN0") {
+    if(req.headers.authorization == process.env.BASIC_AUTH) {
         // next function to run, only IF is true.
         next()
     } else {
